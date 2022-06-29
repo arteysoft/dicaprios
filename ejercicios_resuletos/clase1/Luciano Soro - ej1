@@ -1,0 +1,102 @@
+
+
+
+public Class Cliente{
+
+
+	private Integer uuid;
+	private String nombre;
+	private Auto auto;
+	
+	public Cliente(String nombre, Auto auto){
+	
+		this.nombre = nombre;
+		this.auto = auto;
+
+	}
+	
+	 public String toString() {
+        return "Nombre:" + nombre + " Auto:" + auto;
+    }
+
+	
+}
+
+
+public Class Auto {
+
+
+	private String marca;
+	private String modelo;
+	
+	publica void setModelo(String modelo){
+		this.modelo = modelo;	
+	}
+	
+	public void setMarca(String marca){
+		this.marca = marca;
+	}
+	
+	 public String toString() {
+        return "Marca:" + marca + "Modelo:" + modelo;
+    }
+}
+
+
+
+
+
+public class Inmobiliaria {
+    public static void main(String[] args)
+    {
+        
+		
+		
+		String modeloAuto;
+		
+		String marcaAuto;
+		
+			
+        Console cnsl
+            = System.console();
+  
+    
+		String nombreCliente = cnsl.readLine(
+		"Ingrese nombre de cliente : ");
+		
+		String marcaAuto = cnsl.readLine(
+		"Ingrese marca de auto ");
+
+		String modeloAuto = cnsl.readLine(
+		"Ingrese modelo de auto  : ");
+		
+		
+		Auto auto = new Auto();
+		auto.setMarca(marcaAuto);
+		auto.setModelo(modeloAuto);
+		
+		Cliente cliente = new Cliente(nombreCliente, a1);
+		
+		
+		Path path
+		= Paths.get("C:\\Users\\HP\\Desktop\\clientes.txt");
+ 
+     
+ 
+        // Try block to check for exceptions
+        try {
+       
+            Files.writeString(path, str,
+                              StandardCharsets.UTF_8);
+        }
+ 
+      
+        catch (IOException ex) {
+ 
+            System.out.print("Invalid Path");
+        }
+		
+		
+	  
+    }
+}
