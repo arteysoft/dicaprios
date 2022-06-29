@@ -1,0 +1,17 @@
+Vamos a realizar
+
+Un pequeño desarrollo donde
+
+Se consulta un cliente por la pantalla
+
+id: UUID
+nombre: Daniel Molinario
+auto: Peugeot 206
+
+Console.readLine
+o
+Scanner(System.in).nextLine
+
+Vamos a grabar en archivo de texto el cliente
+
+ 

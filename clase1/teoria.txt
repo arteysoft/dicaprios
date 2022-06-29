@@ -1,0 +1,200 @@
+----------------------------------------------------------------------
+Patrones de diseño
+----------------------------------------------------------------------
+
+MVC Model View Controller
+
+Browser/Mobile ---------------------------------------> HTTP Server
+
+Requerimiento ----------------------------------------> Controller
+                                                        Servicio
+                                                        Model
+JSON/HTML     <---------------------------------------- Response
+
+Si retornamos HTML estaríamos frente a un [server side rendering]
+Si retornarmos JSON estaríamos frente a un API Rest
+
+Inicialmente el MVC poco tenia que ver con esto.
+
+Es decir la vista ? no es un render.
+Vista componente Inteligente que detecta cambios en el 
+el model para reacomodar el display o render de la pantalla.
+
+Si vamos a patrones de diseño, Cual sería el patron donde
+una vista mira al model para ver hubo cambios ?
+
+Observer ------> Esta mirando si hubo cambios.
+
+[Client side rendering]
+
+React,
+Angular,
+Vue
+
+Hay algo que hizo google que es bastante cercano al patron
+original MVC - Angular.
+
+                INPUT
+           MODEL      VISTA
+
+----------------------------------------------------------------------
+Herencia
+----------------------------------------------------------------------
+
+Herencia de tipos
+-----------------
+
+Persona
+  Cliente 
+
+Cliente hereda atributos de persona
+
+Este tipo de herencia queda descartado.... NO USAR
+
+Preferir la composicion a la herencia
+
+Cliente {
+   Persona p;
+}
+
+Herencia de comportamiento
+--------------------------
+
+Tengo un metodo y lo sobreescribo
+o no.
+
+.toString()
+
+Puedo sobreescribirlo.
+
+class srvA              { public void m1() }
+class srvB extends srvA { public void m1() }
+
+SrvA sa = new SrvB();
+sa.m1();
+
+Este tipo de herencia se usa pero con CAUTELA !!!!!!
+
+Herencia de Inversion de Control
+--------------------------------
+
+class SuperClase {
+   public calculo() {
+      paso1();
+      paso2();
+      pase3();
+   }
+   protected abstract paso1();
+   protected abstract paso2();
+   protected abstract paso3();
+}
+
+----------------------------------------------------------------------
+Encapsulamiento
+----------------------------------------------------------------------
+
+Que es el encapsulamiento ????
+
+En que casos me sirve el encapsulamiento ?
+
+Velocidad
+
+setKilometrosHora(Integer)
+getMillasMinuto()
+
+Torque
+
+setFuerza
+setDistancia
+
+getNewtonMetro
+getKilos
+
+Justificado
+
+
+Getter y Setters
+
+No tienen sentido, Heredamos de la decada del 80 cuando el paradigma
+se intermezclaba atributos y funcionlidad.
+
+class Cliente {
+   private Integer montoSolicitado
+   public setEdad(Integer edad, TipoProducto tipoProducto) {
+      if (tipoProducto === TipoProducto.hipoteca) {
+          if (edad > 65) {
+             throw new RuntimeException(); 
+          }
+      }      
+      this.edad = edad;      
+   }
+}
+
+
+Las estrucutras de datos, se usan asi, como estructuras de datos
+Algunos le ponene getter y setter sin nada.
+Otros le ponemos public a los atributos.
+
+Como se trabaja la validacion de Hipoteca
+
+class Cliente {
+}
+
+interface IValidadorCliente { validarCliente(Cliente c) }
+   class ValidadorClienteHipoteca : IValidadorCliente {}
+   class ValidadorClienteProdLimpieza : IValidadorCliente {}
+
+Luego a un metodo me llega
+
+metodo1(Cliente c, IValidadorCliente validar) {
+   validar.validarCliente(c);  
+}
+
+----------------------------------------------------------------------
+Mutabilidad e Inmutabilidad
+----------------------------------------------------------------------
+
+Mutabilidad es una escrutura de datos, que se puede modificar
+InMutabilidad es una esctructura de datos que solo se puede clonar
+
+Punto {
+   public Integer x;
+   public Integer y;
+}
+
+Punto {
+   Punto(Integer x, Integer y) {
+      this.x = x;
+      this.y = y;     
+   }
+   public final Integer x;
+   public final Integer y;
+}
+
+Poder utilizar concurrencia.
+
+Porque se llevan bien los objetos inmutables con la concurrencia.
+
+var1 = new Punto(pAnt.x + 1, pAnt.y)
+copiarOtroThread(var1)
+
+Pensar en esto:
+
+La copia de punteros es por valor, se copia el valor del puntero.
+Con lo cual si yo hago
+
+var1 = null;
+var1 = new Punto(33,32);
+
+
+
+
+
+
+
+
+
+
+
+
+                                          
