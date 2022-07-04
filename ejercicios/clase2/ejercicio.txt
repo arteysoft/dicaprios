@@ -1,0 +1,51 @@
+Tener un contador de 1 .. infinito
+
+en los numeros pares ?
+
+el output va a ser de una manera
+
+en los numeros impares ?
+
+el output va a ser de otra manera
+
+-------------------------------------------------
+
+El output que yo quiero es:
+
+1
+
+---------------------
+2
+---------------------
+
+3
+
+---------------------
+4
+---------------------
+
+5
+
+---------------------
+6
+---------------------
+
+7
+
+---------------------
+8
+---------------------
+
+ETC
+
+Ahora bien, si bien va a tener un if el output no se debe
+relacionar en la misma clase con el if
+
+if (esPar(x)) {
+   System.out.println("-------------------");
+   System.out.println(x);
+   System.out.println("-------------------");
+}
+
+ESTO NOOOOOOOOOOOOOOOOOOOo
+
