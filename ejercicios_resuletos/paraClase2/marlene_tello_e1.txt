@@ -1,0 +1,69 @@
+public interfaz iUtilites
+{
+  
+  
+  GenerarArch(string nomarch, string data);
+
+}
+
+
+public class Cliente :IUtilites
+{  
+
+   public System.Guid Id     { get; set;};
+   public string      Nombre { get; set;};
+   public string      Auto   { get; set;};
+
+
+   
+
+   public Cliente ( Guid id, string nombre, string auto ) 
+   {
+	this.id = id;
+        this.nombre = nombre;
+        this.auto = auto;
+   }
+
+   
+
+   public void GenerarArch(string nomarch, string data)
+   { 
+        
+	StreamWriter arch = new StreamWriter (nomarch);
+
+        arch.Write (data);
+        
+        arch.close();
+    }   
+ 
+
+}
+
+
+------------------------
+
+string path = @"C:\Temp;
+string nomarch;
+string dataImprimir;
+string busqxNom;
+
+List<Cliente> clienteList = new List<>();
+
+clienteList.Add(new Cliente(Guid.NewGuid(), "Juan Perez", "Peugeot 308");
+clienteList.Add(new Cliente(Guid.NewGuid(), "Roberto Galimberti", "Fiat");
+clienteList.Add(new Cliente(Guid.NewGuid(), "Ana Sosa", "Chevrolet");
+
+
+Console.WriteLine("Ingrese Nombre");
+busqxNom = Console.ReadLine();
+
+var clientResult = clienteList.First(r => r.Nombre == busqxNom);
+
+dataImprimir= ("Nombre: " + clientResult.Nombre + "," + "Auto: " + clientResult.Auto);
+nomarch = path + "\" + clientResult.Id + ".txt";
+
+GenerarArch(nomarch, dataImprimir);
+   
+
+
+
