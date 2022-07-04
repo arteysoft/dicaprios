@@ -1,0 +1,80 @@
+/*
+Alumno: Ivan Meyer
+*/
+
+
+public interface IOutput {
+
+	public void imprimir (int numero);
+
+}
+
+Este es el DECORATOR es un patron que lo que hace es: 
+Implementar una interfaz y componer la misma interfaz
+
+public class OutputPar implements IOutput {
+
+        IOutput proximaInterfaz; 
+
+	public OutputPar(IOutput proximaInterfaz) {}
+
+	public void imprimir (int numero) {
+		System.out.println("\n-----------");
+		proximaInterfaz.imprimir(numero);
+		System.out.println("\n-----------");
+	}
+	
+}
+
+El numero tiene que ir formateado de esta manera: 0000?
+
+public class OutputImpar implements IOutput {
+
+	public OutputImpar() {}
+
+	public void imprimir (int numero) {
+		System.out.println("\n" + numero.toString());
+	}
+	
+}
+
+
+
+class OutputAlternado implements IOutput {
+
+	protected OutputPar _pares
+	protected OutputImpar _impares
+
+	// Entendí que también se requiere un constructor sin argumentos
+	public OutputAlternado() {}
+	
+	public OutputAlternado(OutputPar pares, OutputImpar impares) {
+		_pares = pares;
+		_impares = impares;
+		}
+
+	public void imprimir (int numero) {
+		if (numero%2 == 0) { // es par
+			_pares.imprimir(numero);
+		else
+			_impares.imprimir(numero);
+	}
+	
+}
+
+// programa
+
+public static void main (String[] args) {
+
+	IOutput output = new OutputAlternado(
+		new OutputPar(),
+		new OutputImpar()
+		);
+		
+	int i = 0;
+
+	do {
+		output.imprimir(i);
+	} while(i++);
+	
+}
