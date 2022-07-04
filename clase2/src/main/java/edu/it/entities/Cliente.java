@@ -14,4 +14,5 @@ public class Cliente {
 		nombre = cliente.nombre;
 		auto = cliente.auto;
 	}
+	public Cliente() {}
 }
