@@ -11,5 +11,4 @@ public class GrabadorClienteSQL implements GrabadorCliente {
 		em.merge(cli);
 		em.getTransaction().commit();
 	}
-
 }
