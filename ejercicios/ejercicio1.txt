@@ -1,0 +1,16 @@
+Ya tenemos decorator !!!!
+
+Ahora, se plantea lo siguiente:
+
+Se necesita hacer lo mismo pero el output en formato HTML
+
+los numeros pares van a tener
+
+<h1>numero 12</h1>
+<h5>numero 13</h5>
+
+Quiero que me den, primero ? que clases agregarian
+y porque.
+
+Despues tirarse a codificar la solucion.
+

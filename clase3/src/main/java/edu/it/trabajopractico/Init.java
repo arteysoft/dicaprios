@@ -21,9 +21,11 @@ class _wrapper implements _contador {
 		this._contador = _contador;
 	}
 	public void tick(int n) {
+		System.out.println("");
 		System.out.println("---------------");
 		_contador.tick(n);
 		System.out.println("---------------");
+		System.out.println("");
 	}
 }
 
@@ -43,9 +45,8 @@ class _logicaAlternativa {
 		this._wrapper = _wrapper;
 	}
 	public void run() {
-		int x = 1;
-		for (;;) {
-			if (x % 0 == 0) {
+		for (int x = 1;;x++) {
+			if (x % 2 == 0) {
 				_contador = _wrapper;
 			} else {
 				_contador = _contadorImpl;
