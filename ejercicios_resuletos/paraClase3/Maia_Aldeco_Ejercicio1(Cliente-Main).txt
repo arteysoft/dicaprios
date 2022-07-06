@@ -1,0 +1,70 @@
+package educacionit.Entity;
+
+public class Cliente {
+
+    private String id;
+    private String nombre;
+    private String auto;
+
+    public Cliente() {
+    }
+
+    public Cliente(String id, String nombre, String auto) {
+        this.id = id;
+        this.nombre = nombre;
+        this.auto = auto;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id='" + id + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", auto='" + auto + '\'' +
+                '}';
+    }
+}
+
+
+-------------------------------------------------------------------------
+
+
+import educacionit.Entity.Cliente;
+
+import java.io.*;
+import java.util.Scanner;
+import java.util.UUID;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Ingrese su nombre");
+        String name = input.nextLine();
+        System.out.println("Ingrese el modelo de su auto");
+        String car = input.nextLine();
+
+        Cliente cliente = new Cliente(UUID.randomUUID().toString(),name,car);
+
+        System.out.println(cliente.toString());
+
+        String ruta = "C:/Users/Maia/Documents/prueba/";
+        String s = File.separator;
+        ruta.replace("/", s);
+
+        File archivoTexto = new File(ruta + "Cliente.txt");
+
+        try(FileWriter escribirFichero = new FileWriter(archivoTexto)){
+            for(int i = 0; i<cliente.toString().length();i++){
+                escribirFichero.write(cliente.toString().charAt(i));
+            }
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
+    }
+}

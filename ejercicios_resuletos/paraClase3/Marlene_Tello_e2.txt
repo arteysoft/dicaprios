@@ -1,0 +1,114 @@
+
+---------------- IOutputNumero.cs --------------------------------
+
+
+public interface IOutputNumero{
+
+	void outputNumero (int num);
+
+}
+
+
+---------------- OutputNumero.cs ------------------------------------------------
+
+public class OutputNumeroDecorado:IOutputNumero{
+
+	public void OutputNumeroDecorado (int num){
+              
+		Console.WriteLine("---------------");
+                Console.WriteLine(num);
+                Console.WriteLine("---------------");
+        }
+}
+
+public class OutputNumeroSinDecorar:IOutputNumero{
+
+
+        public void OutputNumeroSinDecorar (int num){
+              
+		Console.WriteLine(num);
+                Console.WriteLine("---------------");
+        }
+
+}
+
+
+
+
+
+----- OutputCondicional.cs
+
+
+public  class OutputCondicional: IOutputNumero
+        {   
+        
+	private OutputNumeroDecorado   outputNumeroDecorado; 
+        private OutputNumeroSinDecorar outputNumeroSinDecorar ;  
+
+        
+        public OutputCondicional (OutputNumeroDecorado   outputNumeroDecorado,
+                                  OutputNumeroSinDecorar outputNumeroSinDecorar){
+
+        this.outputNumeroDecorado =outputNumeroDecorado;
+        this.outputNumeroSinDecorar = outputNumeroSinDecorar;
+
+
+        public void outputNumero(int num){
+
+
+        if (num%2 == 0)
+        {
+		outputNumeroDecorado.outputNumero(num);
+                return;
+
+        }
+        else
+        {
+		outputNumeroSinDecorar.outputNumero(num);
+
+
+        }
+
+
+      }
+
+        }
+
+}
+
+
+---- Factory.cs ---------
+
+
+
+public class Factory{
+
+	
+        public static OutputNumero CrearOutputNumero(){
+
+	return new OutputCondicional(
+                             new OutputNumeroDecorado(),
+                             new OutputNumeroSinDecorar()
+                                              );
+        }
+}
+
+
+
+---- Programa principal Program.cs -------------------------
+
+
+
+public class Program{
+	public static void main(String args){
+            
+
+	    OutputNumero outputNum = Factory.CrearOutputNumero();
+	    
+            for (int i = 1; i < 50; i++) 
+            {
+		outputNum.outputNumero(i);
+
+            }   
+
+}

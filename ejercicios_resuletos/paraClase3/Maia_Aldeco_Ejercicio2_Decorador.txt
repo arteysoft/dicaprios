@@ -1,0 +1,75 @@
+public interface ImprimirNumero {
+
+    public void imprimir(int num);
+}
+
+--------------------------------------------------------------------------
+
+public class ImprimirDecorado implements ImprimirNumero {
+
+
+    public void imprimir(int num) {
+        System.out.println("\n------------");
+        System.out.println(num);
+        System.out.println("------------");
+    }
+}
+
+------------------------------------------------------------------------
+
+public class ImprimirSinDecorar implements ImprimirNumero {
+
+    public void imprimir(int num) {
+        System.out.println("\n" + num);
+    }
+}
+
+------------------------------------------------------------------------
+
+public class AlternarNumero implements ImprimirNumero{
+
+    public ImprimirDecorado par;
+    public ImprimirSinDecorar impar;
+
+    public AlternarNumero(ImprimirDecorado par, ImprimirSinDecorar impar) {
+        this.par = par;
+        this.impar = impar;
+    }
+
+    public void imprimir(int num) {
+        if(num%2==0) {
+            par.imprimir(num);
+            return;
+        }
+        else {
+            impar.imprimir(num);
+            return;
+        }
+    }
+}
+
+------------------------------------------------------------------------
+
+public class Factory {
+
+
+    public static ImprimirNumero crearDecorado(){
+        return new AlternarNumero(new ImprimirDecorado(),
+                new ImprimirSinDecorar());
+    }
+
+}
+
+------------------------------------------------------------------------
+
+public class Main {
+    public static void main(String[] args) {
+
+        ImprimirNumero imprimirNum = Factory.crearDecorado();
+        int numero = 0;
+        while(numero != -1){
+            numero ++;
+            imprimirNum.imprimir(numero);
+        }
+    }
+}
