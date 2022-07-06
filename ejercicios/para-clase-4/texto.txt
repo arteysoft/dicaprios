@@ -1,0 +1,38 @@
+Dado que si llega a fallar el SQL
+Entonces debo recurrir el archivo en formato JSON.
+
+Esto esta hecho.
+
+Ahora se me planteo otro problema.
+
+Entre ciertos horarios. NO SE PUEDE USAR EL SQL
+Porque este se encuentra en modo mantenimiento.
+
+Que alternativas tenemos.
+
+Un archivo que nos diga si esta o no en mantenimiento
+un mensaje tcp que nos avise que entro o salio de mantenimiento.
+
+La pregunta del millon es ? Podemos implementaro con otro 
+decorator ??????
+
+GrabadorCondicion implements GrabadorCliente
+
+
+consumer ------------------------------------------> GrabadorCliente
+                                                          SQL
+                                                          JSON
+                                                          Condicional 
+                                                              SQL + JSON
+                                                          GrabadorMantenimiento
+                                                              Condicional
+
+
+Chain of Responsability es:
+
+GrabadorMantenimiento ----> GrabadorCondicional -> SQL
+                                                -> JSON
+                      ----> GrabadorJSON
+                                                              
+
+
