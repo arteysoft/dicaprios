@@ -1,0 +1,39 @@
+El objetivo del oberver es que varias clases observer el comportamiento de una 
+clase
+
+La clase observada se llama asi Observada o Observable.
+La clase que observa se llama Observer.
+
+Vamos a hacer el siguiente ejercicio:
+
+1) Hay un robot que juega a Piedra Papel o Tijera.
+   Toma dos jugadores, y los enfrenta en el juego.
+   Esto es random y gana el jugador segun las reglas del juego.
+
+2) Hay una clase Torneo (Observada, o Observable) que itera
+   100 veces el robot que juega al piedra papel o tijera.
+
+3) Luego hay un sistema de apuestas con las siguientes caracteristicas
+
+   a) Se paga 2:1 Si acertas con que sale mas veces 
+      Gana Jugador 1
+      Gana Jugador 2
+      Empate
+
+   b) Se paga 10:1 Si acertas cuantas veces gana Jugador 1
+
+   c) Se paga 100 a 1 si acertas cual es el resultado de las primeras
+      5 jugadas.
+
+
+   JuegoEnSi (Robot)
+   Torneo (100 juegos o partidas)
+      List<Observer> sistemaApuestas;
+
+   Observer {
+      Cada observer va a ser un tipo de apuesta diferente
+   }
+
+   Despues vamos a tener apostadores que juegan a algun tipo de apuesta.
+
+   
