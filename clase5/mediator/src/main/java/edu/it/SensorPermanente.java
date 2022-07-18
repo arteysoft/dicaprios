@@ -13,7 +13,8 @@ public class SensorPermanente extends Actor {
         	
         	var climaVehiculo = new ClimaVehiculo(
         				datosClima,
-        				datosVehiculo 
+        				datosVehiculo,
+        				0
         			);
         	
         	broker.enviarMensaje(

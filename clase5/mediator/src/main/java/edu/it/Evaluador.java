@@ -21,6 +21,8 @@ public class Evaluador extends Actor {
     	// Quiero que mensajeen al gestor multa solo si supero el limite
     	// de velocidad
     	
+    	climaVehiculo.limitePermitido = 9999;
+    	
 		this.broker.enviarMensaje(new Mensaje("edu.it.gestormulta", 
 					new Gson().toJson(climaVehiculo)));	
 	}

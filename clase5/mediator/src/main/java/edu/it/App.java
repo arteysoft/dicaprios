@@ -12,6 +12,10 @@ public class App {
         broker.suscribe(new Suscriptor("edu.it.evaluador", new Evaluador()));
         broker.suscribe(new Suscriptor("edu.it.gestormulta", new GestorMulta()));
         
+        broker.suscribe(new Suscriptor("edu.it.grabadorsql", new GrabadorSQL()));
+		broker.suscribe(new Suscriptor("edu.it.grabadorjson", new GrabadorJSON()));
+		broker.suscribe(new Suscriptor("edu.it.grabadortracer", new GrabadorTracer()));
+        
         broker.enviarMensaje(new Mensaje("com.dicaprios.sensor", "arranca..."));
     }
 }
