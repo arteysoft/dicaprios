@@ -7,10 +7,13 @@ import java.util.Random;
 import edu.it.model.Usuario;
 
 public class ServicioDiscador {
+	private DiscadorAbstracto discador = null;
+	
+	public ServicioDiscador(DiscadorAbstracto discador) {
+		this.discador = discador;
+	}
+
 	public void run() {
-	
-		DiscadorPotencia discador = new DiscadorPotencia();
-	
 		for (;;) {
 			Integer x = new Random().nextInt(4);
 			System.out.println(x+"");
